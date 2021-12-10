@@ -11,4 +11,4 @@ def errors(line):
         elif c != m[o.pop()]: return p[c][0], False
     return False, sum(x*5**i for i, x in enumerate(p[m[c]][1] for c in o))
 a, b = zip(*[errors(l) for l in data])
-print(sum(a), int(median(sorted(x for x in b if x))), sep='\n')
+print(sum(a), int(median([x for x in b if x])), sep='\n')
