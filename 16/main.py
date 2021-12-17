@@ -40,7 +40,5 @@ def evaluate_packets(p):
     elif p[1] == 7: return int(evaluate_packets(p[2][0]) == evaluate_packets(p[2][1]))
 
 data = read_input(__file__)
-bin_str = "".join([f"{bin(int(x.strip(), 16))[2:]:0>4}" for x in data if x.strip()])
-b = array([*bin_str], dtype=int)
-p, rest = parse_packet(b)
+p, rest = parse_packet(array([*bin(int(data, 16))[2:].rjust(len(data.strip())*4, '0')], dtype=int))
 print(add_v(p), evaluate_packets(p), sep='\n')
